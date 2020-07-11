@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Quotes from './Quotes'
 
 export default class Goals extends Component {
 	state = {
@@ -175,7 +176,10 @@ export default class Goals extends Component {
 						<p>How much time did I spend watching TV today?</p>
 						<p>What can I do to improve tomorrow?</p>
 					</div>
-				</div>
+					</div>
+					<div className="quotes">
+					<Quotes />
+					</div>
 			</div>
 		);
 	}

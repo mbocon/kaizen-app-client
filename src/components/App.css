@@ -133,6 +133,7 @@
   height: 70vh;
   background-color: whitesmoke;
   text-align: center;
+  display: flex;
 }
 
 .landing-h1 {
@@ -145,6 +146,31 @@
   font-size: 1.25em;
   line-height: 1.5em;
   letter-spacing: 1px;
+  text-align: left;
+}
+
+.landing-left {
+  width: 60%
+}
+
+.landing-right {
+  width: 40%;
+  padding-top: 2em;
+}
+
+.quote-btn {
+  margin: 1em;
+}
+
+.quotes-h3 {
+  width: 75%;
+}
+
+.quotes-h5 {
+  border: none;
+}
+
+.quote-area {
   text-align: left;
 }
 
@@ -197,17 +223,22 @@
 }
 
 .left {
-  width: 60%;
+  width: 50%;
 }
 
 .right {
-  width: 40%;
+  width: 35%;
+}
+
+.quotes {
+  width: 15%;
+  text-align: center;
 }
 
 
 h3 {
   margin: 0 auto;
-  width: 35%;
+  width: 75%;
   margin-bottom: 1em;
   border-bottom: 5px solid rgba(0, 174, 255);
 }
@@ -280,8 +311,9 @@ li {
   padding: 1em 2em;
   width: 75%;
   margin:  0 auto;
-  border: 1px solid;
-  font-size: 20px ;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  font-size: 18px ;
   text-align: left;
 }
 
