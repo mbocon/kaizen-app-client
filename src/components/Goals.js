@@ -76,11 +76,11 @@ export default class Goals extends Component {
 	render() {
 		return (
 			<div className='goals-main'>
-				<div className='left'>
+				<div className='main left'>
 					{this.state.isEditing ? null : (
                         <div>
-                        <div className="goals-h3">
-                            <h3>Daily goals</h3>
+                        <div className="goals">
+                            <h3 className='goals-h3'>Daily goals</h3>
                             </div>
                             <div className='labels'>
                             <div className="title-label">
@@ -101,9 +101,9 @@ export default class Goals extends Component {
 								if (this.state.goalToEdit.id === goal.id)
 									return (
 										<div key={goal.id}>
-											<h3>EDIT GOAL</h3>
+											<h3 className='edit-h3'>EDIT GOAL</h3>
 											<form className='form-group'>
-												<label className='form-label' htmlFor='title'>
+												<label className='form-label edit-label' htmlFor='title'>
 													Title
 												</label>
 												<input
@@ -114,7 +114,7 @@ export default class Goals extends Component {
 													value={goal.title}
 												/>
 
-												<label className='form-label' htmlFor='body'>
+												<label className='form-label edit-label' htmlFor='body'>
 													Body
 												</label>
 												<input
@@ -168,7 +168,7 @@ export default class Goals extends Component {
 					</Link>
 				</div>
 				<div className='right'>
-					<h3>Daily reflections:</h3>
+					<h3>Questions</h3>
 					<div className='reflections'>
 						<p>Did I accomplish my goals today?</p>
 						<p>If no, why not?</p>
@@ -177,9 +177,9 @@ export default class Goals extends Component {
 						<p>What can I do to improve tomorrow?</p>
 					</div>
 					</div>
-					<div className="quotes">
+				
 					<Quotes />
-					</div>
+					
 			</div>
 		);
 	}
