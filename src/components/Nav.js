@@ -4,29 +4,90 @@ import { Link } from 'react-router-dom';
 export default class Nav extends Component {
 	render() {
 		return (
-			<div className='nav'>
-				<Link to='/'>
+			<nav class='navbar nav navbar-expand-lg navbar-dark bg-light'>
+				<Link className='navbar-brand' to='/'>
 					<h1 className='nav-logo'>Kaizen</h1>
 				</Link>
-				<div className='nav-buttons'>
-					<Link to='/register'>
-						<button className='styled-btn'>
-							<span className='span'></span>
-							<span className='span'></span>
-							<span className='span'></span>
-							<span className='span'></span>Register
-						</button>
-					</Link>
-					<Link className='' to='/login'>
-						<button className='styled-btn'>
-							<span className='span'></span>
-							<span className='span'></span>
-							<span className='span'></span>
-							<span className='span'></span>Login
-						</button>
-					</Link>
+				<button
+					class='navbar-toggler'
+					type='button'
+					data-toggle='collapse'
+					data-target='#navbarNav'
+					aria-controls='navbarNav'
+					aria-expanded='false'
+					aria-label='Toggle navigation'>
+					<span class='navbar-toggler-icon'></span>
+				</button>
+				<div class='collapse navbar-collapse' id='navbarNav'>
+					<ul class='navbar-nav'>
+						<li className='nav-item'>
+							<Link className='nav-link' to='/register'>
+								<button className='styled-btn'>
+									<span className='span'></span>
+									<span className='span'></span>
+									<span className='span'></span>
+									<span className='span'></span>Register
+								</button>
+							</Link>
+						</li>
+						<li className='nav-item'>
+							<Link className='nav-link' to='/login'>
+								<button className='styled-btn'>
+									<span className='span'></span>
+									<span className='span'></span>
+									<span className='span'></span>
+									<span className='span'></span>Login
+								</button>
+							</Link>
+						</li>
+					</ul>
 				</div>
-			</div>
+			</nav>
 		);
 	}
 }
+
+// <nav className='navbar nav fixed-top navbar-expand-md'>
+// 				<div className='container'>
+// 					<Link className='navbar-brand' to='/'>
+// 						<h1 className='nav-logo'>Kaizen</h1>
+// 					</Link>
+// 					<button
+// 						class='navbar-toggler'
+// 						type='button'
+// 						data-toggle='collapse'
+// 						data-target='#navbarCollapse'
+// 						aria-controls='navbarCollapse'
+// 						aria-expanded='false'
+// 						aria-label='Toggle navigation'>
+// 						<span class='navbar-toggler-icon'></span>
+// 						<span class="icon-bar"></span>
+// 						<span class="icon-bar"></span>
+// 						<span class="icon-bar"></span>
+// 					</button>
+// 					<div class='collapse navbar-collapse' id='navbarCollapse'>
+// 						<ul class='navbar-nav mr-auto'>
+// 						<li className="nav-item">
+// 							<Link className='nav-link' to='/register'>
+// 								<button className='styled-btn'>
+// 									<span className='span'></span>
+// 									<span className='span'></span>
+// 									<span className='span'></span>
+// 									<span className='span'></span>Register
+// 								</button>
+// 							</Link>
+// 							</li>
+// 							<li className="nav-item">
+// 							<Link className='nav-link' to='/login'>
+// 								<button className='styled-btn'>
+// 									<span className='span'></span>
+// 									<span className='span'></span>
+// 									<span className='span'></span>
+// 									<span className='span'></span>Login
+// 								</button>
+// 							</Link>
+// 							</li>
+// 						</ul>
+// 					</div>
+// 				</div>
+// 			</nav>
