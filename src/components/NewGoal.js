@@ -7,7 +7,8 @@ export default class NewGoal extends Component {
         goals: [],
 		formInputs: {
             title: '',
-            body: ''
+            body: '',
+            user_id: parseInt(localStorage.id)
         }
     };
     
@@ -16,7 +17,8 @@ export default class NewGoal extends Component {
 		this.setState(updateInput);
 	};
 	handleSubmit = event => {
-		event.preventDefault();
+        event.preventDefault();
+        console.log(this.state.formInputs)
 		fetch('http://localhost:3000/goals', {
 			body: JSON.stringify(this.state.formInputs),
 			method: 'POST',
@@ -44,7 +46,11 @@ export default class NewGoal extends Component {
         window.location.pathname = '/home';
     }
 
+    userId = parseInt(localStorage.id)
+
     render(){
+        console.log(this.state.formInputs.user_id)
+        console.log(this.userId, 'is the new goals userid')
         return(
             <div className="new">
             <Nav />

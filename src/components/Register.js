@@ -2,30 +2,19 @@ import React, { Component } from 'react';
 import Nav from './Nav';
 import Footer from './Footer';
 
-
-
 export default class Register extends Component {
     state = {
-        user: {},
-        email: '',
+        username: '',
         password: ''
     }
 
-    handleEmailChange = (e) => {
-        this.setState({
-            email: e.target.value
-        })
-    }
+    handleInput = event => {
+		this.setState({
+			[event.target.id]: event.target.value,
+		});
+	};
 
-    handlePasswordChange = (e) => {
-        this.setState({
-            password: e.target.value
-        })
-    }
-
-
-
-    handleSubmit = (e, email, password) => {
+    handleSubmit = (e) => {
         e.preventDefault()
         fetch(`http://localhost:3000/users`, {
             method: "POST",
@@ -34,27 +23,21 @@ export default class Register extends Component {
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                email,
-                password
+                user: {
+                    username: this.state.username,
+                    password: this.state.password
+                }
             })
         })
         .then(resp => resp.json())
         .then(data => {
-            localStorage.setItem("token", data.jwt)
-            this.handleLogin(data.user)
-        })
-        
-        this.setState({
-            email: '',
-            password: ''
-        })
+            console.log(data)
+            this.setState({
+                username: '',
+                password: ''
+            })
+        }).then((e)=>this.props.history.push('/login'))
     }
-    
-    handleLogin = (user) => {
-        this.setState({
-            user: user
-        })
-      }
 	
 	render() {
 		return (
@@ -63,28 +46,28 @@ export default class Register extends Component {
 				<div className='login-main'>
 					<h1 className='login-h1'>Register</h1>
 					<form onSubmit={this.handleSubmit} className='form-group login-form'>
-						<label htmlFor='email'>
+						<label htmlFor='username'>
 							<input
 								className='form-control mx-sm-3 login-input'
-								placeholder='Enter your Email'
-								type='email'
-								name='email'
-                                id='email'
+								placeholder='Create username'
+								type='username'
+								name='username'
+                                id='username'
                                 
-								onChange={this.handleEmailChange}
+								onChange={this.handleInput}
 							/>
 						</label>
 						<label htmlFor='password'>
 							<input
 								className='form-control mx-sm-3 login-input'
-								placeholder='Enter password'
+								placeholder='Create password'
 								type='password'
 								name='password'
 								id='password'
-								onChange={this.handlePasswordChange}
+								onChange={this.handleInput}
 							/>
 						</label>
-						<button className='styled-btn login-btn'>
+						<button className='styled-btn login-btn' type='submit'>
                             Register
                             <span className='span'></span>
 							<span className='span'></span>
