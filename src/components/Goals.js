@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Quotes from './Quotes'
 
+
 export default class Goals extends Component {
 	state = {
 		goals: [],
@@ -9,20 +10,19 @@ export default class Goals extends Component {
 		goalToEdit: {},
 		title: '',
 		body: '',
+		user: {}
 	};
-
+	
 	componentDidMount() {
 		this.getData();
 	}
 
 	getData() {
-		fetch('http://localhost:3000/goals')
-			.then(data => data.json())
-			.then(data =>
-				this.setState({
-					goals: data,
-				}),
-			);
+	   fetch('http://localhost:3000/goals')
+	   .then(response => response.json())
+	   .then(data => this.setState({
+		   goals: data
+	   }))
 	}
 
 	handleDelete = (id, index) => {
@@ -73,7 +73,10 @@ export default class Goals extends Component {
 			});
 	}
 
+	userId = parseInt(localStorage.id)
+
 	render() {
+		console.log(this.userId)
 		return (
 			<div className='goals-main'>
 				<div className='main left'>
@@ -97,6 +100,7 @@ export default class Goals extends Component {
 					)}
 					<ul>
 						{this.state.goals.map((goal, index) => {
+							console.log(goal, goal.user_id)
 							if (this.state.isEditing) {
 								if (this.state.goalToEdit.id === goal.id)
 									return (
@@ -130,7 +134,7 @@ export default class Goals extends Component {
 											</form>
 										</div>
 									);
-							} else
+							} else if(goal.user_id === this.userId){
 								return (
 									<span key={goal.id} className='list-item'>
                                         <li>
@@ -141,23 +145,23 @@ export default class Goals extends Component {
                                             <div className='body'>{goal.body}</div>
                                         </div>
 											<div className='action-btns'>
-												<button className='btn styled-btn' onClick={() => this.toggleEdit(goal, goal.id)}>
+												<button className='btn styled-btn edit-btn' onClick={() => this.toggleEdit(goal, goal.id)}>
 													<span className='span'></span>
 													<span className='span'></span>
 													<span className='span'></span>
 													<span className='span'></span>
-													{this.state.isEditing ? 'Save' : 'Edit'}
+													{this.state.isEditing ? 'SAVE' : 'EDIT'}
 												</button>
-												<button className='btn styled-btn' onClick={() => this.handleDelete(goal.id, index)}>
+												<button className='btn styled-btn delete-btn' onClick={() => this.handleDelete(goal.id, index)}>
 													<span className='span'></span>
 													<span className='span'></span>
 													<span className='span'></span>
-													<span className='span'></span>Delete
+													<span className='span'></span>DELETE
 												</button>
 											</div>
 										</li>
 									</span>
-								);
+								);}
 						})}
 					</ul>
 					<Link to='/new' className='add-btn styled-btn btn'>
