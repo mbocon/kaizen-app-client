@@ -1,0 +1,1 @@
+export const api = 'https://kaizen-app-api.herokuapp.com';

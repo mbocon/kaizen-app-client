@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Nav from './Nav';
 import Footer from './Footer';
+import { api } from '../url';
 
 export default class Register extends Component {
     state = {
@@ -16,7 +17,7 @@ export default class Register extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/users`, {
+        fetch(`${api}/users`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -31,7 +32,6 @@ export default class Register extends Component {
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
             this.setState({
                 username: '',
                 password: ''

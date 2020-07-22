@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Nav from './Nav';
 import Footer from './Footer';
+import { api } from '../url';
 
 export default class Login extends Component {
 	state = {
@@ -25,7 +26,7 @@ export default class Login extends Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
-		fetch('http://localhost:3000/users/login', {
+		fetch(`${api}/users/login`, {
 			body: JSON.stringify({
 				user: {
 					username: this.state.username,

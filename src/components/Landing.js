@@ -13,9 +13,7 @@ export default class Landing extends Component {
 						gradual and methodical process.
 					</p>
 				</div>
-				
-					<Quotes />
-				
+				<Quotes />
 			</div>
 		);
 	}

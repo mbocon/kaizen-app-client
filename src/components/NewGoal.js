@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Nav from './Nav';
 import Footer from './Footer';
+import { api } from '../url';
 
 export default class NewGoal extends Component {
     state = {
@@ -18,8 +19,7 @@ export default class NewGoal extends Component {
 	};
 	handleSubmit = event => {
         event.preventDefault();
-        console.log(this.state.formInputs)
-		fetch('http://localhost:3000/goals', {
+		fetch(`${api}/goals`, {
 			body: JSON.stringify(this.state.formInputs),
 			method: 'POST',
 			headers: {
@@ -49,8 +49,6 @@ export default class NewGoal extends Component {
     userId = parseInt(localStorage.id)
 
     render(){
-        console.log(this.state.formInputs.user_id)
-        console.log(this.userId, 'is the new goals userid')
         return(
             <div className="new">
             <Nav />

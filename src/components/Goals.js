@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Quotes from './Quotes'
-
+import Quotes from './Quotes';
+import { api } from '../url';
 
 export default class Goals extends Component {
 	state = {
@@ -10,23 +10,25 @@ export default class Goals extends Component {
 		goalToEdit: {},
 		title: '',
 		body: '',
-		user: {}
+		user: {},
 	};
-	
+
 	componentDidMount() {
 		this.getData();
 	}
 
 	getData() {
-	   fetch('http://localhost:3000/goals')
-	   .then(response => response.json())
-	   .then(data => this.setState({
-		   goals: data
-	   }))
+		fetch(`${api}/goals`)
+			.then(response => response.json())
+			.then(data =>
+				this.setState({
+					goals: data,
+				}),
+			);
 	}
 
 	handleDelete = (id, index) => {
-		fetch(`http://localhost:3000/goals/${id}`, {
+		fetch(`${api}/goals/${id}`, {
 			method: 'DELETE',
 		}).then(() => {
 			this.setState({
@@ -59,7 +61,7 @@ export default class Goals extends Component {
 
 	handleUpdate(event, item) {
 		event.preventDefault();
-		fetch(`http://localhost:3000/goals/${item.id}`, {
+		fetch(`${api}/goals/${item.id}`, {
 			body: JSON.stringify(item),
 			method: 'PUT',
 			headers: {
@@ -69,38 +71,36 @@ export default class Goals extends Component {
 		})
 			.then(response => response.json())
 			.then(updatedGoal => {
-				window.location.reload()
+				window.location.reload();
 			});
 	}
 
-	userId = parseInt(localStorage.id)
+	userId = parseInt(localStorage.id);
 
 	render() {
-		console.log(this.userId)
 		return (
 			<div className='goals-main'>
 				<div className='main left'>
 					{this.state.isEditing ? null : (
-                        <div>
-                        <div className="goals">
-                            <h3 className='goals-h3'>Daily goals</h3>
-                            </div>
-                            <div className='labels'>
-                            <div className="title-label">
-                                <h5>Title</h5>
-                                </div>
-                                <div className="body-label">
-                                <h5>Body</h5>
-                                </div>
-                                <div className="actions-label">
-                                <h5>Actions</h5>
-                                </div>
+						<div>
+							<div className='goals'>
+								<h3 className='goals-h3'>Daily goals</h3>
+							</div>
+							<div className='labels'>
+								<div className='title-label'>
+									<h5>Title</h5>
+								</div>
+								<div className='body-label'>
+									<h5>Body</h5>
+								</div>
+								<div className='actions-label'>
+									<h5>Actions</h5>
+								</div>
 							</div>
 						</div>
 					)}
 					<ul>
 						{this.state.goals.map((goal, index) => {
-							console.log(goal, goal.user_id)
 							if (this.state.isEditing) {
 								if (this.state.goalToEdit.id === goal.id)
 									return (
@@ -134,16 +134,16 @@ export default class Goals extends Component {
 											</form>
 										</div>
 									);
-							} else if(goal.user_id === this.userId){
+							} else if (goal.user_id === this.userId) {
 								return (
 									<span key={goal.id} className='list-item'>
-                                        <li>
-                                        <div className="wrapper-1">
-                                            <div className='title'>{goal.title}</div>
-                                        </div>
-                                        <div className="wrapper-2">
-                                            <div className='body'>{goal.body}</div>
-                                        </div>
+										<li>
+											<div className='wrapper-1'>
+												<div className='title'>{goal.title}</div>
+											</div>
+											<div className='wrapper-2'>
+												<div className='body'>{goal.body}</div>
+											</div>
 											<div className='action-btns'>
 												<button className='btn styled-btn edit-btn' onClick={() => this.toggleEdit(goal, goal.id)}>
 													<span className='span'></span>
@@ -161,7 +161,8 @@ export default class Goals extends Component {
 											</div>
 										</li>
 									</span>
-								);}
+								);
+							}
 						})}
 					</ul>
 					<Link to='/new' className='add-btn styled-btn btn'>
@@ -180,10 +181,8 @@ export default class Goals extends Component {
 						<p>How much time did I spend watching TV today?</p>
 						<p>What can I do to improve tomorrow?</p>
 					</div>
-					</div>
-				
-					<Quotes />
-					
+				</div>
+				<Quotes />
 			</div>
 		);
 	}
