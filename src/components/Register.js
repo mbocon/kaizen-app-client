@@ -66,7 +66,6 @@ export default class Register extends Component {
 								id='password'
 								onChange={this.handleInput}
 							/>
-							Password must be 5 or more characters in length
 						</label>
 						<button className='styled-btn login-btn' type='submit'>
 							Register

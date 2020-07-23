@@ -8,22 +8,22 @@ export default class Nav extends Component {
 	render() {
 		if(localStorage.token && localStorage.id) {
 			return (
-				<nav class='navbar nav navbar-expand-lg navbar-dark bg-light'>
+				<nav className='navbar nav navbar-expand-lg navbar-dark bg-light'>
 				<Link className='navbar-brand' to='/'>
 					<h1 className='nav-logo'>Kaizen</h1>
 				</Link>
 				<button
-					class='navbar-toggler'
+					className='navbar-toggler'
 					type='button'
 					data-toggle='collapse'
 					data-target='#navbarNav'
 					aria-controls='navbarNav'
 					aria-expanded='false'
 					aria-label='Toggle navigation'>
-					<span class='navbar-toggler-icon'></span>
+					<span className='navbar-toggler-icon'></span>
 				</button>
-				<div class='collapse navbar-collapse' id='navbarNav'>
-					<ul class='navbar-nav'>
+				<div className='collapse navbar-collapse' id='navbarNav'>
+					<ul className='navbar-nav'>
 						<li className='nav-item'>
 							<Link className='nav-link' to='/login'>
 								<button className='styled-btn' onClick={this.logout}>
@@ -48,12 +48,12 @@ export default class Nav extends Component {
 			)
 		} else
 		return (
-			<nav class='navbar nav navbar-expand-lg navbar-dark bg-light'>
+			<nav className='navbar nav navbar-expand-lg navbar-dark bg-light'>
 				<Link className='navbar-brand' to='/'>
 					<h1 className='nav-logo'>Kaizen</h1>
 				</Link>
 				<button
-					class='navbar-toggler'
+					className='navbar-toggler'
 					type='button'
 					data-toggle='collapse'
 					data-target='#navbarNav'
@@ -62,8 +62,8 @@ export default class Nav extends Component {
 					aria-label='Toggle navigation'>
 					<span class='navbar-toggler-icon'></span>
 				</button>
-				<div class='collapse navbar-collapse' id='navbarNav'>
-					<ul class='navbar-nav'>
+				<div className='collapse navbar-collapse' id='navbarNav'>
+					<ul className='navbar-nav'>
 						<li className='nav-item'>
 							<Link className='nav-link' to='/register'>
 								<button className='styled-btn'>

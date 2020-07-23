@@ -39,17 +39,13 @@ export default class Login extends Component {
 				Accept: 'application/json',
 				'Content-Type': 'application/json, text/plain, */*',
 			},
-		},
-		console.log({
-			username: this.state.username,
-			password: this.state.password,
 		})
-		)
 			.then(response => response.json())
 			.then(response => {
-				localStorage.clear();
+				// localStorage.clear();
 				localStorage.token = response.token;
 				localStorage.setItem('id', response.user.id);
+				console.log(localStorage, 'from login ')
 				return this.setState({
 					currentUser: response.currentUser,
 					username: '',
