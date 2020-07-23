@@ -106,7 +106,7 @@ export default class Login extends Component {
 				<div className='login'>
 					<Nav />
 					<div className='login-main'>
-						<h2>Incorrect username or password</h2>
+						<h2 className='incorrect-h2'>Incorrect username or password</h2>
 						<button className='styled-btn try-again-btn' onClick={this.tryAgain}>Try again?</button>
 					</div>
 					<Footer />
