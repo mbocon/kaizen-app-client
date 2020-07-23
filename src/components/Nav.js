@@ -34,7 +34,7 @@ export default class Nav extends Component {
 								</button>
 							</Link>
 							<Link className='nav-link' to='/home'>
-								<button className='styled-btn' onClick={this.logout}>
+								<button className='styled-btn'>
 									<span className='span'></span>
 									<span className='span'></span>
 									<span className='span'></span>
