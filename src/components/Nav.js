@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default class Nav extends Component {
 	logout = () => {
-		localStorage.clear('token');
+		localStorage.clear();
 	}
 	render() {
 		if(localStorage.token && localStorage.id) {
@@ -31,6 +31,14 @@ export default class Nav extends Component {
 									<span className='span'></span>
 									<span className='span'></span>
 									<span className='span'></span>Logout
+								</button>
+							</Link>
+							<Link className='nav-link' to='/home'>
+								<button className='styled-btn' onClick={this.logout}>
+									<span className='span'></span>
+									<span className='span'></span>
+									<span className='span'></span>
+									<span className='span'></span>Profile
 								</button>
 							</Link>
 						</li>
