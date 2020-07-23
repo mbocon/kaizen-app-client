@@ -429,7 +429,7 @@ li {
 	}
 
 	.main {
-		height: 60%;
+		height: 50%;
 		overflow: scroll;
 		width: 100%;
 	}
@@ -439,7 +439,7 @@ li {
 	}
 
 	.aside {
-		height: 40%;
+		height: 50%;
 		font-size: 0.9em;
 		width: 100% !important;
 		overflow: scroll;
