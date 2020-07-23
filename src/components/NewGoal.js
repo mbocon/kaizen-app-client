@@ -41,11 +41,9 @@ export default class NewGoal extends Component {
 			}).then(e => this.props.history.push('/home'))
             .catch(error => console.log(error));  
     };
-    
-
-    userId = parseInt(localStorage.id)
 
     render(){
+        console.log(this.state.user_id, 'is the user id')
         return(
             <div className="new">
             <Nav />

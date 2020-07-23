@@ -10,7 +10,7 @@ export default class Goals extends Component {
 		goalToEdit: {},
 		title: '',
 		body: '',
-		user: {},
+		user_id: parseInt(localStorage.id)
 	};
 
 	componentDidMount() {
@@ -75,9 +75,9 @@ export default class Goals extends Component {
 			});
 	}
 
-	userId = parseInt(localStorage.id);
-
 	render() {
+		console.log(this.state.user_id, 'from goals.js is the user id')
+		console.log(this.state.goals, 'are goals')
 		return (
 			<div className='goals-main'>
 				<div className='main left'>
@@ -143,7 +143,8 @@ export default class Goals extends Component {
 											</form>
 										</div>
 									);
-							} else if (goal.user_id === this.userId) {
+							} else if (goal.user_id === this.state.user_id) {
+								console.log(goal.user_id, 'is the goal user id')
 								return (
 									<span key={goal.id} className='list-item'>
 										<li>
