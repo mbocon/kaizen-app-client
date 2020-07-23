@@ -38,13 +38,10 @@ export default class NewGoal extends Component {
 					},
                     goals: [jsonedGoal, ...this.state.goals],
 				});
-			})
+			}).then(e => this.props.history.push('/home'))
             .catch(error => console.log(error));  
     };
     
-    redirect() {
-        window.location.pathname = '/home';
-    }
 
     userId = parseInt(localStorage.id)
 
@@ -60,7 +57,7 @@ export default class NewGoal extends Component {
                             <input type='text' id='title' value={this.state.formInputs.title} onChange={this.handleChange}  className='form-group-item'/>
 							<label htmlFor='body'>Body</label>
                             <input type='text' id='body' value={this.state.formInputs.body} onChange={this.handleChange}  className='form-group-item'/>
-							<button type='submit' onClick={this.redirect} className='btn styled-btn'><span className='span'></span>
+							<button type='submit' className='btn styled-btn'><span className='span'></span>
                             <span className='span'></span>
                             <span className='span'></span>
                             <span className='span'></span>Submit</button>
