@@ -100,6 +100,15 @@ export default class Goals extends Component {
 						</div>
 					)}
 					<ul>
+						{this.state.isEditing ? null : (
+							<Link to='/new' className='add-btn styled-btn btn'>
+								<span className='span'></span>
+								<span className='span'></span>
+								<span className='span'></span>
+								<span className='span'></span>Add goal
+							</Link>
+						)}
+
 						{this.state.goals.map((goal, index) => {
 							if (this.state.isEditing) {
 								if (this.state.goalToEdit.id === goal.id)
@@ -165,12 +174,6 @@ export default class Goals extends Component {
 							}
 						})}
 					</ul>
-					<Link to='/new' className='add-btn styled-btn btn'>
-						<span className='span'></span>
-						<span className='span'></span>
-						<span className='span'></span>
-						<span className='span'></span>Add goal
-					</Link>
 				</div>
 				<div className='right'>
 					<h3>Questions</h3>

@@ -19,6 +19,7 @@ export default class Login extends Component {
 	}
 
 	handleInput = event => {
+		console.log(event.target.value)
 		this.setState({
 			[event.target.id]: event.target.value,
 		});
@@ -38,7 +39,12 @@ export default class Login extends Component {
 				Accept: 'application/json',
 				'Content-Type': 'application/json, text/plain, */*',
 			},
+		},
+		console.log({
+			username: this.state.username,
+			password: this.state.password,
 		})
+		)
 			.then(response => response.json())
 			.then(response => {
 				localStorage.clear();
@@ -72,7 +78,7 @@ export default class Login extends Component {
 									type='text'
 									name='username'
 									id='username'
-									required='true'
+									required={true}
 									onChange={this.handleInput}
 								/>
 							</label>
@@ -83,7 +89,7 @@ export default class Login extends Component {
 									type='password'
 									name='password'
 									id='password'
-									required='true'
+									required={true}
 									onChange={this.handleInput}
 								/>
 							</label>

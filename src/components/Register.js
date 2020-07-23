@@ -4,41 +4,42 @@ import Footer from './Footer';
 import { api } from '../url';
 
 export default class Register extends Component {
-    state = {
-        username: '',
-        password: ''
-    }
+	state = {
+		username: '',
+		password: '',
+	};
 
-    handleInput = event => {
+	handleInput = event => {
 		this.setState({
 			[event.target.id]: event.target.value,
 		});
 	};
 
-    handleSubmit = (e) => {
-        e.preventDefault()
-        fetch(`${api}/users`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                user: {
-                    username: this.state.username,
-                    password: this.state.password
-                }
-            })
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            this.setState({
-                username: '',
-                password: ''
-            })
-        }).then((e)=>this.props.history.push('/login'))
-    }
-	
+	handleSubmit = e => {
+		e.preventDefault();
+		fetch(`${api}/users`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+			},
+			body: JSON.stringify({
+				user: {
+					username: this.state.username,
+					password: this.state.password,
+				},
+			}),
+		})
+			.then(resp => resp.json())
+			.then(data => {
+				this.setState({
+					username: '',
+					password: '',
+				});
+			})
+			.then(e => this.props.history.push('/login'));
+	};
+
 	render() {
 		return (
 			<div className='login'>
@@ -52,12 +53,11 @@ export default class Register extends Component {
 								placeholder='Create username'
 								type='username'
 								name='username'
-                                id='username'
-                                
+								id='username'
 								onChange={this.handleInput}
 							/>
 						</label>
-						<label htmlFor='password'>
+						<label htmlFor='password'> 
 							<input
 								className='form-control mx-sm-3 login-input'
 								placeholder='Create password'
@@ -66,13 +66,14 @@ export default class Register extends Component {
 								id='password'
 								onChange={this.handleInput}
 							/>
+							Password must be 5 or more characters in length
 						</label>
 						<button className='styled-btn login-btn' type='submit'>
-                            Register
-                            <span className='span'></span>
+							Register
 							<span className='span'></span>
-                            <span className='span'></span>
-                            <span className='span'></span>
+							<span className='span'></span>
+							<span className='span'></span>
+							<span className='span'></span>
 						</button>
 					</form>
 				</div>
@@ -81,5 +82,3 @@ export default class Register extends Component {
 		);
 	}
 }
-
-
